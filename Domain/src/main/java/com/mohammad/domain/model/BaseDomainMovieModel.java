@@ -1,20 +1,18 @@
 package com.mohammad.domain.model;
 
-import java.util.List;
-
 import io.reactivex.annotations.NonNull;
 
-public class DomainMovieModel {
+public class BaseDomainMovieModel {
 
     private int mId;
     private String mTitle;
     private String mPoster;
-    private List<String> mGenres;
-    private List<String> mImages;
+    private String[] mGenres;
+    private String[] mImages;
 
-    public DomainMovieModel(@NonNull int mId, @NonNull String mTitle,
-                            @NonNull String mPoster, @NonNull List<String> mGenres,
-                            @NonNull List<String> mImages) {
+    public BaseDomainMovieModel(@NonNull int mId, @NonNull String mTitle,
+                                @NonNull String mPoster, @NonNull String[] mGenres,
+                                @NonNull String[] mImages) {
         this.mId = mId;
         this.mTitle = mTitle;
         this.mPoster = mPoster;
@@ -34,11 +32,11 @@ public class DomainMovieModel {
         return mPoster;
     }
 
-    public List<String> getGenres() {
+    public String[] getGenres() {
         return mGenres;
     }
 
-    public List<String> getImages() {
+    public String[] getImages() {
         return mImages;
     }
 }
