@@ -10,7 +10,7 @@ public class GetAllMovies extends ObservableUseCase {
 
     private MoviesRepository mRepository ;
 
-    public GetAllMovies(MoviesRepository mRepository,PostExecutionThread mExecutionThread){
+    public GetAllMovies(MoviesRepository mRepository, PostExecutionThread mExecutionThread){
         super(mExecutionThread);
         this.mRepository = mRepository;
     }
