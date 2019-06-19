@@ -14,6 +14,12 @@ ext {
     javaxInjectVersion = '1'
     androidAnnotationsVersion = '21.0.3'
     daggerVersion = '2.11'
+    gsonVersion = '2.8.1'
+    okHttpVersion = '3.14.2'
+    okioVersion = '2.2.2'
+    retrofitVersion = '2.3.0'
+    androidSupportRunnerVersion = '1.0.0'
+    androidSupportRulesVersion = '1.0.2'
 
     //Testing
     jUnitVersion = '4.13-beta-3'
@@ -45,5 +51,24 @@ ext {
             assertj    : "org.assertj:assertj-core:${assertJVersion}",
             mokito     : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}",
             robolectric: "org.robolectric:robolectric:${robolectricVersion}"
+    ]
+
+    remoteDependencies = [
+            gson             : "com.google.code.gson:gson:${gsonVersion}",
+            okio             : "com.squareup.okio:okio:${okioVersion}",
+            okHttp           : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger     : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            retorfit         : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retorfitConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retorfitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+    ]
+
+    remoteTestDependencies = [
+            junit        : "junit:junit:${jUnitVersion}",
+            kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            assertj      : "org.assertj:assertj-core:${assertJVersion}",
+            mokito       : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}",
+            supportRuuner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
+            supportRulse : "com.android.support.test:rules:${androidSupportRulesVersion}"
     ]
 }
