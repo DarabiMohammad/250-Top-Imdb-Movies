@@ -1,9 +1,9 @@
 package com.mohammad.domain.repository;
 
-import com.mohammad.domain.model.BaseDomainMovieModel;
-import com.mohammad.domain.model.DetailedDomainMovieModel;
-import com.mohammad.domain.model.DomainGenresModel;
-import com.mohammad.domain.model.DomainUserMovieModel;
+import com.mohammad.domain.model.MovieModel;
+import com.mohammad.domain.model.DetailedMovieModel;
+import com.mohammad.domain.model.GenresModel;
+import com.mohammad.domain.model.UserMovieModel;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ import io.reactivex.annotations.Nullable;
 
 public interface MoviesRepository {
 
-    Observable<List<BaseDomainMovieModel>> getAllMovies();
+    Observable<List<MovieModel>> getAllMovies();
 
-    Observable<List<BaseDomainMovieModel>> getMoviesByName(@NonNull String mName, @Nullable int mPageNumber);
+    Observable<List<MovieModel>> getMoviesByName(@NonNull String mName, @Nullable int mPageNumber);
 
-    Observable<DetailedDomainMovieModel> getMovieDetail(@NonNull int mMovieId);
+    Observable<DetailedMovieModel> getMovieDetail(@NonNull int mMovieId);
 
-    Observable<List<DomainGenresModel>> getGenres();
+    Observable<List<GenresModel>> getGenres();
 
-    Observable<List<BaseDomainMovieModel>> getSpecialGenreMovies(@NonNull int mGenreId,@Nullable int mPageNumber);
+    Observable<List<MovieModel>> getSpecialGenreMovies(@NonNull int mGenreId, @Nullable int mPageNumber);
 
-    Completable registerMovie(DomainUserMovieModel mMoview);
+    Completable registerMovie(UserMovieModel mMoview);
 }

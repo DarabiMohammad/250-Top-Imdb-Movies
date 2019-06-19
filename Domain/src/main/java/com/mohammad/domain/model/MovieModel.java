@@ -2,7 +2,7 @@ package com.mohammad.domain.model;
 
 import io.reactivex.annotations.NonNull;
 
-public class BaseDomainMovieModel {
+public class MovieModel {
 
     private int mId;
     private String mTitle;
@@ -10,9 +10,9 @@ public class BaseDomainMovieModel {
     private String[] mGenres;
     private String[] mImages;
 
-    public BaseDomainMovieModel(@NonNull int mId, @NonNull String mTitle,
-                                @NonNull String mPoster, @NonNull String[] mGenres,
-                                @NonNull String[] mImages) {
+    public MovieModel(@NonNull int mId, @NonNull String mTitle,
+                      @NonNull String mPoster, @NonNull String[] mGenres,
+                      @NonNull String[] mImages) {
         this.mId = mId;
         this.mTitle = mTitle;
         this.mPoster = mPoster;

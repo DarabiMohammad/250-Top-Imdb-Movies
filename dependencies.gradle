@@ -16,7 +16,7 @@ ext {
     daggerVersion = '2.11'
 
     //Testing
-    jUnitVersion = '4.12'
+    jUnitVersion = '4.13-beta-3'
     assertJVersion = '3.8.0'
     mokitoVersion = '2.1.0'
     robolectricVersion = '3.4.2'

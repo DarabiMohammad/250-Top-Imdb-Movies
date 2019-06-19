@@ -1,8 +1,8 @@
-package com.mohammad.domain.model;
+package com.mohammad.data.model;
 
 import io.reactivex.annotations.NonNull;
 
-public class DetailedDomainMovieModel extends BaseDomainMovieModel {
+public class DetailedMovieEntity extends MovieEntity {
 
     private String mYear;
     private String mCountry;
@@ -18,24 +18,18 @@ public class DetailedDomainMovieModel extends BaseDomainMovieModel {
     private String mMetaScore;
     private String mImdbVotes;
     private String mImdbId;
-    private String mType ;
+    private String mType;
 
-    public DetailedDomainMovieModel(int mId, String mTitle,
-                                    String mPoster, String[] mGenres,
-                                    String[] mImages) {
-        super(mId, mTitle, mPoster, mGenres, mImages);
-    }
-
-    public DetailedDomainMovieModel(@NonNull int mId,@NonNull String mTitle,
-                                    @NonNull String mPoster,@NonNull String[] mGenres,
-                                    @NonNull String[] mImages,@NonNull String mYear,
-                                    @NonNull String mCountry,@NonNull String mImdbRating,
-                                    @NonNull String mRated,@NonNull String mReleasd,
-                                    @NonNull String mRuntime,@NonNull String mDirector,
-                                    @NonNull String mWriter,@NonNull String mActors,
-                                    @NonNull String mPlot,@NonNull String mAwards,
-                                    @NonNull String mMetaScore,@NonNull String mImdbVotes,
-                                    @NonNull String mImdbId,@NonNull String mType) {
+    public DetailedMovieEntity(@NonNull int mId, @NonNull String mTitle,
+                               @NonNull String mPoster, @NonNull String[] mGenres,
+                               @NonNull String[] mImages, @NonNull String mYear,
+                               @NonNull String mCountry, @NonNull String mImdbRating,
+                               @NonNull String mRated, @NonNull String mReleasd,
+                               @NonNull String mRuntime, @NonNull String mDirector,
+                               @NonNull String mWriter, @NonNull String mActors,
+                               @NonNull String mPlot, @NonNull String mAwards,
+                               @NonNull String mMetaScore, @NonNull String mImdbVotes,
+                               @NonNull String mImdbId, @NonNull String mType) {
         super(mId, mTitle, mPoster, mGenres, mImages);
         this.mYear = mYear;
         this.mCountry = mCountry;

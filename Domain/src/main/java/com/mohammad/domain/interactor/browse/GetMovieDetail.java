@@ -2,23 +2,26 @@ package com.mohammad.domain.interactor.browse;
 
 import com.mohammad.domain.executer.PostExecutionThread;
 import com.mohammad.domain.interactor.ObservableUseCase;
-import com.mohammad.domain.model.DetailedDomainMovieModel;
+import com.mohammad.domain.model.DetailedMovieModel;
 import com.mohammad.domain.repository.MoviesRepository;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 
-public class GetMovieDetail extends ObservableUseCase<DetailedDomainMovieModel, GetMovieDetail.Params> {
+public class GetMovieDetail extends ObservableUseCase<DetailedMovieModel, GetMovieDetail.Params> {
 
     private MoviesRepository mRepository;
 
+    @Inject
     public GetMovieDetail(MoviesRepository mRepository, PostExecutionThread mPostExecutionThread) {
         super(mPostExecutionThread);
         this.mRepository = mRepository;
     }
 
     @Override
-    public Observable<DetailedDomainMovieModel> buildObservableUseCase(Params mParams) {
+    public Observable<DetailedMovieModel> buildObservableUseCase(Params mParams) {
         return mRepository.getMovieDetail(mParams.mMovieId);
     }
 

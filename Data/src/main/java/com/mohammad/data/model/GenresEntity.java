@@ -1,11 +1,11 @@
-package com.mohammad.domain.model;
+package com.mohammad.data.model;
 
-public class DomainGenresModel {
+public class GenresEntity {
 
     private int mId;
-    private String mName ;
+    private String mName;
 
-    public DomainGenresModel(int mId, String mName) {
+    public GenresEntity(int mId, String mName) {
         this.mId = mId;
         this.mName = mName;
     }

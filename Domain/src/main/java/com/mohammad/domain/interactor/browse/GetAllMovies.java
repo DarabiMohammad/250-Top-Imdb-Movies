@@ -4,12 +4,15 @@ import com.mohammad.domain.executer.PostExecutionThread;
 import com.mohammad.domain.interactor.ObservableUseCase;
 import com.mohammad.domain.repository.MoviesRepository;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 public class GetAllMovies extends ObservableUseCase {
 
     private MoviesRepository mRepository ;
 
+    @Inject
     public GetAllMovies(MoviesRepository mRepository, PostExecutionThread mExecutionThread){
         super(mExecutionThread);
         this.mRepository = mRepository;

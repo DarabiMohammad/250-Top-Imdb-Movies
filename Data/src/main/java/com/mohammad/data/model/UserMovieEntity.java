@@ -1,23 +1,23 @@
-package com.mohammad.domain.model;
+package com.mohammad.data.model;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 
-public class DomainUserMovieModel<T> {
+public class UserMovieEntity<T> {
 
     private String mTitle;
-    private String mImdbId ;
-    private String mCountry ;
-    private String mYear ;
-    private String mDirector ;
-    private String mImdbRating ;
+    private String mImdbId;
+    private String mCountry;
+    private String mYear;
+    private String mDirector;
+    private String mImdbRating;
     private String mImdbVotes;
-    private T mPoster ;
+    private T mPoster;
 
-    public DomainUserMovieModel(@NonNull String mTitle, @NonNull String mImdbId,
-                                @NonNull String mCountry, @NonNull String mYear,
-                                @Nullable String mDirector,@Nullable String mImdbRating,
-                                @Nullable String mImdbVotes,@Nullable T mPoster) {
+    public UserMovieEntity(@NonNull String mTitle, @NonNull String mImdbId,
+                           @NonNull String mCountry, @NonNull String mYear,
+                           @Nullable String mDirector, @Nullable String mImdbRating,
+                           @Nullable String mImdbVotes, @Nullable T mPoster) {
         this.mTitle = mTitle;
         this.mImdbId = mImdbId;
         this.mCountry = mCountry;
@@ -59,4 +59,5 @@ public class DomainUserMovieModel<T> {
     public T getPoster() {
         return mPoster;
     }
+
 }
