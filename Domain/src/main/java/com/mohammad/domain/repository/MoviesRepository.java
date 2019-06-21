@@ -14,7 +14,7 @@ import io.reactivex.annotations.Nullable;
 
 public interface MoviesRepository {
 
-    Observable<List<MovieModel>> getAllMovies();
+    Observable<List<MovieModel>> getAllMovies(int mPageNumber);
 
     Observable<List<MovieModel>> getMoviesByName(@NonNull String mName, @Nullable int mPageNumber);
 

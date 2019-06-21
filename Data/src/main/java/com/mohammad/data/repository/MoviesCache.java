@@ -11,35 +11,34 @@ import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.annotations.Nullable;
 
 public interface MoviesCache {
 
     Completable clearMoviesFromCache();
 
-    Completable saveMoviesToCache(List<MovieEntity> mEntityMovies);
+    Completable saveMoviesToCache(@NonNull List<MovieEntity> mEntityMovies);
 
-    Completable saveDetailedMovie(DetailedMovieEntity mDetailedMovieEntity);
+    Completable saveDetailedMovieToCache(@NonNull DetailedMovieEntity mDetailedMovieEntity);
 
-    Completable saveGenresList(List<GenresEntity> mGenresList);
+    Completable saveGenresListToCache(@NonNull List<GenresEntity> mGenresList);
 
-    Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies);
+    Completable saveSpecialGenreMoviesToCache(@NonNull List<MovieEntity> mSpecialGenreMovies);
 
-    Observable<List<MovieEntity>> getMovies();
+    Observable<List<MovieEntity>> getMoviesFromCache();
 
-    Observable<List<MovieEntity>> getMoviesByName(@NonNull String mName, @Nullable int mPageNumber);
+    Observable<List<MovieEntity>> getMoviesByNameFromCache(@NonNull String mName);
 
-    Observable<DetailedMovieEntity> getMovieDetail(@NonNull int mMovieId);
+    Observable<DetailedMovieEntity> getMovieDetailFromCache(@NonNull int mMovieId);
 
-    Observable<List<GenresEntity>> getGenres();
+    Observable<List<GenresEntity>> getGenresFromCache();
 
-    Observable<List<MovieEntity>> getSpecialGenreMovies(@NonNull int mGenreId, @Nullable int mPageNumber);
+    Observable<List<MovieEntity>> getSpecialGenreMoviesFromCache(@NonNull int mGenreId);
 
-    Completable registerMovie(UserMovieEntity mMoview);
+    Completable registerMovieToCache(@NonNull UserMovieEntity mMoview);
 
     Single<Boolean> areMoviesCached();
 
-    Completable setLastCacheTime(long mLastTime);
+    Completable setLastCacheTime(@NonNull long mLastTime);
 
     Single<Boolean> isCacheExpired() ;
 }

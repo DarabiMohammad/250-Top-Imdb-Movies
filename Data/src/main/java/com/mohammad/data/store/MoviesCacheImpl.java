@@ -31,17 +31,17 @@ public class MoviesCacheImpl implements MoviesDataStore {
 
     @Override
     public Completable saveDetailedMovie(DetailedMovieEntity mDetailedMovieEntity) {
-        return mCache.saveDetailedMovie(mDetailedMovieEntity);
+        return mCache.saveDetailedMovieToCache(mDetailedMovieEntity);
     }
 
     @Override
     public Completable saveGenresList(List<GenresEntity> mGenresList) {
-        return mCache.saveGenresList(mGenresList);
+        return mCache.saveGenresListToCache(mGenresList);
     }
 
     @Override
     public Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies) {
-        return mCache.saveSpecialGenreMovies(mSpecialGenreMovies);
+        return mCache.saveSpecialGenreMoviesToCache(mSpecialGenreMovies);
     }
 
     @Override
@@ -50,32 +50,32 @@ public class MoviesCacheImpl implements MoviesDataStore {
     }
 
     @Override
-    public Observable<List<MovieEntity>> getAllMovies() {
-        return mCache.getMovies();
+    public Observable<List<MovieEntity>> getAllMovies(int mPageNumber) {
+        return mCache.getMoviesFromCache();
     }
 
     @Override
     public Observable<List<MovieEntity>> getMoviesByName(String mName, int mPageNumber) {
-        return mCache.getMoviesByName(mName,mPageNumber);
+        return mCache.getMoviesByNameFromCache(mName);
     }
 
     @Override
     public Observable<DetailedMovieEntity> getMovieDetail(int mMovieId) {
-        return mCache.getMovieDetail(mMovieId);
+        return mCache.getMovieDetailFromCache(mMovieId);
     }
 
     @Override
     public Observable<List<GenresEntity>> getGenres() {
-        return mCache.getGenres();
+        return mCache.getGenresFromCache();
     }
 
     @Override
     public Observable<List<MovieEntity>> getSpecialGenreMovies(int mGenreId, int mPageNumber) {
-        return mCache.getSpecialGenreMovies(mGenreId,mPageNumber);
+        return mCache.getSpecialGenreMoviesFromCache(mGenreId);
     }
 
     @Override
     public Completable registerMovie(UserMovieEntity mMoview) {
-        return mCache.registerMovie(mMoview);
+        return mCache.registerMovieToCache(mMoview);
     }
 }

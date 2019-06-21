@@ -57,10 +57,10 @@ public class MoviesDataRepository implements MoviesRepository {
     }
 
     @Override
-    public Observable<List<MovieModel>> getAllMovies() {
+    public Observable<List<MovieModel>> getAllMovies(int mPageNumber) {
         return setUpCacheVariablesObservable()
                 .flatMap((Function<Boolean[], Observable<List<MovieEntity>>>) booleans ->
-                        mFactory.getMoviesDataStore(booleans[0], booleans[1]).getAllMovies())
+                        mFactory.getMoviesDataStore(booleans[0], booleans[1]).getAllMovies(mPageNumber))
                 .flatMap((Function<List<MovieEntity>, Observable<List<MovieEntity>>>) movieEntities ->
                         mFactory.getCacheMoviesDataStore().saveMovies(movieEntities)
                                 .andThen(Observable.just(movieEntities)))
@@ -94,10 +94,10 @@ public class MoviesDataRepository implements MoviesRepository {
     public Observable<DetailedMovieModel> getMovieDetail(int mMovieId) {
         return setUpCacheVariablesObservable()
                 .flatMap((Function<Boolean[], Observable<DetailedMovieEntity>>) booleans ->
-                        mFactory.getMoviesDataStore(booleans[0],booleans[1]).getMovieDetail(mMovieId))
+                        mFactory.getMoviesDataStore(booleans[0], booleans[1]).getMovieDetail(mMovieId))
                 .flatMap((Function<DetailedMovieEntity, Observable<DetailedMovieEntity>>) mDetailedMovieEntity ->
                         mFactory.getCacheMoviesDataStore().saveDetailedMovie(mDetailedMovieEntity)
-                        .andThen(Observable.just(mDetailedMovieEntity)))
+                                .andThen(Observable.just(mDetailedMovieEntity)))
                 .map(mDetailedMovieEntity -> mDetailedMovieMapper.mapFromEntity(mDetailedMovieEntity));
     }
 
@@ -105,12 +105,12 @@ public class MoviesDataRepository implements MoviesRepository {
     public Observable<List<GenresModel>> getGenres() {
         return setUpCacheVariablesObservable()
                 .flatMap((Function<Boolean[], Observable<List<GenresEntity>>>) booleans ->
-                        mFactory.getMoviesDataStore(booleans[0],booleans[1]).getGenres())
+                        mFactory.getMoviesDataStore(booleans[0], booleans[1]).getGenres())
                 .flatMap((Function<List<GenresEntity>, Observable<List<GenresEntity>>>) mGenresEntities -> mFactory.getCacheMoviesDataStore().saveGenresList(mGenresEntities)
                         .andThen(Observable.just(mGenresEntities)))
                 .map(mGenresEntities -> {
                     List<GenresModel> mGenresList = new ArrayList<>();
-                    for (GenresEntity mGenres : mGenresEntities){
+                    for (GenresEntity mGenres : mGenresEntities) {
                         mGenresList.add(mGenreMapper.mapFromEntity(mGenres));
                     }
                     return mGenresList;
@@ -121,13 +121,13 @@ public class MoviesDataRepository implements MoviesRepository {
     public Observable<List<MovieModel>> getSpecialGenreMovies(int mGenreId, int mPageNumber) {
         return setUpCacheVariablesObservable()
                 .flatMap((Function<Boolean[], Observable<List<MovieEntity>>>) booleans ->
-                        mFactory.getMoviesDataStore(booleans[0],booleans[1]).getSpecialGenreMovies(mGenreId,mPageNumber))
+                        mFactory.getMoviesDataStore(booleans[0], booleans[1]).getSpecialGenreMovies(mGenreId, mPageNumber))
                 .flatMap((Function<List<MovieEntity>, Observable<List<MovieEntity>>>) mMovieEntities ->
                         mFactory.getCacheMoviesDataStore().saveSpecialGenreMovies(mMovieEntities)
-                        .andThen(Observable.just(mMovieEntities)))
+                                .andThen(Observable.just(mMovieEntities)))
                 .map(mMovieEntities -> {
                     List<MovieModel> mSpecialMovies = new ArrayList<>();
-                    for (MovieEntity mMovieEntity : mMovieEntities){
+                    for (MovieEntity mMovieEntity : mMovieEntities) {
                         mSpecialMovies.add(mMovieMapper.mapFromEntity(mMovieEntity));
                     }
                     return mSpecialMovies;
@@ -136,6 +136,7 @@ public class MoviesDataRepository implements MoviesRepository {
 
     @Override
     public Completable registerMovie(UserMovieModel mMoview) {
+        //TODO implementing registration user movies here
         return null;
     }
 }

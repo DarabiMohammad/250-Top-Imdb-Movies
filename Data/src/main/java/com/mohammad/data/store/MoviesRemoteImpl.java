@@ -48,28 +48,32 @@ public class MoviesRemoteImpl implements MoviesDataStore {
     }
 
     @Override
-    public Observable<List<MovieEntity>> getAllMovies() {
-        return mRemote.getAllMovies();
+    public Observable<List<MovieEntity>> getAllMovies(int mPageNumber) {
+        return mRemote.getAllMovies(mPageNumber);
     }
 
     @Override
     public Observable<List<MovieEntity>> getMoviesByName(String mName, int mPageNumber) {
-        throw new UnsupportedOperationException("Getting Movies By Name Isnt Supported Here . . . ");
+        if (mPageNumber < 0)
+            return mRemote.getMoviesByName(mName);
+        return mRemote.getMoviesByName(mName, mPageNumber);
     }
 
     @Override
     public Observable<DetailedMovieEntity> getMovieDetail(int mMovieId) {
-        throw new UnsupportedOperationException("Getting Movie Details Isnt Supported Here . . . ");
+        return mRemote.getMovieDetail(mMovieId);
     }
 
     @Override
     public Observable<List<GenresEntity>> getGenres() {
-        throw new UnsupportedOperationException("Getting Genres Isnt Supported Here . . . ");
+        return mRemote.getGenres();
     }
 
     @Override
     public Observable<List<MovieEntity>> getSpecialGenreMovies(int mGenreId, int mPageNumber) {
-        throw new UnsupportedOperationException("Getting Special Genre Movies Isnt Supported Here . . . ");
+        if (mPageNumber < 0)
+            return mRemote.getSpecialGenreMovies(mGenreId);
+        return mRemote.getSpecialGenreMovies(mGenreId, mPageNumber);
     }
 
     @Override

@@ -10,7 +10,6 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.annotations.Nullable;
 
 public interface MoviesDataStore {
 
@@ -24,15 +23,15 @@ public interface MoviesDataStore {
 
     Completable clearMovies();
 
-    Observable<List<MovieEntity>> getAllMovies();
+    Observable<List<MovieEntity>> getAllMovies(int mPageNumber);
 
-    Observable<List<MovieEntity>> getMoviesByName(@NonNull String mName, @Nullable int mPageNumber);
+    Observable<List<MovieEntity>> getMoviesByName(@NonNull String mName, int mPageNumber);
 
-    Observable<DetailedMovieEntity> getMovieDetail(@NonNull int mMovieId);
+    Observable<DetailedMovieEntity> getMovieDetail(int mMovieId);
 
     Observable<List<GenresEntity>> getGenres();
 
-    Observable<List<MovieEntity>> getSpecialGenreMovies(@NonNull int mGenreId, @Nullable int mPageNumber);
+    Observable<List<MovieEntity>> getSpecialGenreMovies(int mGenreId, int mPageNumber);
 
     Completable registerMovie(UserMovieEntity mMoview);
 }
