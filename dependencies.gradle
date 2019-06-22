@@ -10,6 +10,7 @@ ext {
     //Libraries
     supportLibraryVersion = '28.0.0'
     rxJavaVersion = '2.2.9'
+    rxAndroidVersion = '2.0.1'
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
     androidAnnotationsVersion = '21.0.3'
@@ -19,6 +20,7 @@ ext {
     okioVersion = '2.2.2'
     retrofitVersion = '2.3.0'
     roomVersion = '1.0.0'
+    archCompVersion = '1.0.0'
 
     //Testing
     jUnitVersion = '4.13-beta-3'
@@ -86,9 +88,21 @@ ext {
     ]
 
     cacheTestDependencies = [
-            junit        : "junit:junit:${jUnitVersion}",
-            kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
-            assertj      : "org.assertj:assertj-core:${assertJVersion}",
-            mokito       : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}"
+            junit      : "junit:junit:${jUnitVersion}",
+            kotlinJUnit: "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            assertj    : "org.assertj:assertj-core:${assertJVersion}",
+            mokito     : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}"
+    ]
+
+    presentationDependencies = [
+            daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger            : "com.google.dagger:dagger:${daggerVersion}",
+            rxAndroid         : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject       : "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            archRuntime       : "android.arch.lifecycle:runtime:${archCompVersion}",
+            archExtensions    : "android.arch.lifecycle:extensions:${archCompVersion}",
+            archCompiler      : "android.arch.lifecycle:compiler:${archCompVersion}"
     ]
 }

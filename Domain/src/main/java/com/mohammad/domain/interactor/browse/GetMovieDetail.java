@@ -8,7 +8,6 @@ import com.mohammad.domain.repository.MoviesRepository;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
 
 public class GetMovieDetail extends ObservableUseCase<DetailedMovieModel, GetMovieDetail.Params> {
 
@@ -29,12 +28,12 @@ public class GetMovieDetail extends ObservableUseCase<DetailedMovieModel, GetMov
 
         private int mMovieId;
 
-        private Params(int mMovieId) {
+        public Params(int mMovieId) {
             this.mMovieId = mMovieId;
         }
 
-        public Params forMovie(@NonNull int mMovieId) {
-            return new Params(mMovieId);
+        public int forMovie() {
+            return mMovieId;
         }
     }
 }

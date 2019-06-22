@@ -33,13 +33,17 @@ public class GetMovieByName extends ObservableUseCase<List<MovieModel>, GetMovie
         private final String mName ;
         private final int mPageNumber;
 
-        private Params(@NonNull String mName, @Nullable int mPageNumber) {
+        public Params(@NonNull String mName, @Nullable int mPageNumber) {
             this.mName = mName;
             this.mPageNumber = mPageNumber;
         }
 
-        public static Params forMovie(String mName,int mPageNumber){
-            return new Params(mName,mPageNumber);
+        public String getName(){
+            return mName;
+        }
+
+        public int forMovie(){
+            return mPageNumber;
         }
     }
 }
