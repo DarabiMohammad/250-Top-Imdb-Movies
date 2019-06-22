@@ -18,14 +18,15 @@ ext {
     okHttpVersion = '3.14.2'
     okioVersion = '2.2.2'
     retrofitVersion = '2.3.0'
-    androidSupportRunnerVersion = '1.0.0'
-    androidSupportRulesVersion = '1.0.2'
+    roomVersion = '1.0.0'
 
     //Testing
     jUnitVersion = '4.13-beta-3'
     assertJVersion = '3.8.0'
     mokitoVersion = '2.1.0'
     robolectricVersion = '3.4.2'
+    androidSupportRunnerVersion = '1.0.0'
+    androidSupportRulesVersion = '1.0.2'
 
     domainDependencies = [
             javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
@@ -70,5 +71,24 @@ ext {
             mokito       : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}",
             supportRuuner: "com.android.support.test:runner:${androidSupportRunnerVersion}",
             supportRulse : "com.android.support.test:rules:${androidSupportRulesVersion}"
+    ]
+
+    cacheDependencies = [
+            daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger            : "com.google.dagger:dagger:${daggerVersion}",
+            gson              : "com.google.code.gson:gson:${gsonVersion}",
+            javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject       : "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            roomRuntime       : "android.arch.persistence.room:runtime:${roomVersion}",
+            roomCompiler      : "android.arch.persistence.room:compiler:${roomVersion}",
+            roomRxJava        : "android.arch.persistence.room:rxjava2:${roomVersion}"
+    ]
+
+    cacheTestDependencies = [
+            junit        : "junit:junit:${jUnitVersion}",
+            kotlinJUnit  : "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            assertj      : "org.assertj:assertj-core:${assertJVersion}",
+            mokito       : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mokitoVersion}"
     ]
 }

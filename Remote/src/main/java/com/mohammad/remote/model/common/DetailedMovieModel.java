@@ -4,21 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class DetailedMovieModel extends MovieModel{
 
-    @SerializedName("id")
-    private int mId;
-
-    @SerializedName("title")
-    private String mTitle;
-
-    @SerializedName("poster")
-    private String mPoster;
-
-    @SerializedName("genres")
-    private String[] mGenres;
-
-    @SerializedName("images")
-    private String[] mImages;
-
     @SerializedName("year")
     private String mYear;
 
@@ -75,11 +60,6 @@ public class DetailedMovieModel extends MovieModel{
                               String mImdbVotes, String mImdbId,
                               String mType) {
         super(mId,mTitle,mPoster,mGenres,mImages);
-        this.mId = mId;
-        this.mTitle = mTitle;
-        this.mPoster = mPoster;
-        this.mGenres = mGenres;
-        this.mImages = mImages;
         this.mYear = mYear;
         this.mCountry = mCountry;
         this.mImdbRating = mImdbRating;
@@ -95,26 +75,6 @@ public class DetailedMovieModel extends MovieModel{
         this.mImdbVotes = mImdbVotes;
         this.mImdbId = mImdbId;
         this.mType = mType;
-    }
-
-    public int getId() {
-        return mId;
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public String getPoster() {
-        return mPoster;
-    }
-
-    public String[] getGenres() {
-        return mGenres;
-    }
-
-    public String[] getImages() {
-        return mImages;
     }
 
     public String getYear() {

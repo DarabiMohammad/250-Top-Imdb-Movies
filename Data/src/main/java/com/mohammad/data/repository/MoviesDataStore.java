@@ -19,7 +19,7 @@ public interface MoviesDataStore {
 
     Completable saveGenresList(List<GenresEntity> mGenresList);
 
-    Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies);
+    Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies,int mGenreId);
 
     Completable clearMovies();
 

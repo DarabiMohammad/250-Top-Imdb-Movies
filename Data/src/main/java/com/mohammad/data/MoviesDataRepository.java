@@ -123,7 +123,7 @@ public class MoviesDataRepository implements MoviesRepository {
                 .flatMap((Function<Boolean[], Observable<List<MovieEntity>>>) booleans ->
                         mFactory.getMoviesDataStore(booleans[0], booleans[1]).getSpecialGenreMovies(mGenreId, mPageNumber))
                 .flatMap((Function<List<MovieEntity>, Observable<List<MovieEntity>>>) mMovieEntities ->
-                        mFactory.getCacheMoviesDataStore().saveSpecialGenreMovies(mMovieEntities)
+                        mFactory.getCacheMoviesDataStore().saveSpecialGenreMovies(mMovieEntities,mGenreId)
                                 .andThen(Observable.just(mMovieEntities)))
                 .map(mMovieEntities -> {
                     List<MovieModel> mSpecialMovies = new ArrayList<>();

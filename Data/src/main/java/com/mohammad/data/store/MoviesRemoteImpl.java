@@ -38,7 +38,7 @@ public class MoviesRemoteImpl implements MoviesDataStore {
     }
 
     @Override
-    public Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies) {
+    public Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies,int mGenreId) {
         throw new UnsupportedOperationException("Saving Special Genre Movies Isnt Supported Here . . . ");
     }
 

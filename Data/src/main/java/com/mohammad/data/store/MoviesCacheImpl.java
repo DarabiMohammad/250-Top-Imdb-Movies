@@ -40,8 +40,8 @@ public class MoviesCacheImpl implements MoviesDataStore {
     }
 
     @Override
-    public Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies) {
-        return mCache.saveSpecialGenreMoviesToCache(mSpecialGenreMovies);
+    public Completable saveSpecialGenreMovies(List<MovieEntity> mSpecialGenreMovies, int mGenreId) {
+        return mCache.saveSpecialGenreMoviesToCache(mSpecialGenreMovies,mGenreId);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class MoviesCacheImpl implements MoviesDataStore {
 
     @Override
     public Observable<DetailedMovieEntity> getMovieDetail(int mMovieId) {
-        return mCache.getMovieDetailFromCache(mMovieId);
+        return mCache.getDetailedMovieFromCache(mMovieId);
     }
 
     @Override

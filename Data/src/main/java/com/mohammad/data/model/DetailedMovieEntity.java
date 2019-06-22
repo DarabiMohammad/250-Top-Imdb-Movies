@@ -80,7 +80,7 @@ public class DetailedMovieEntity extends MovieEntity {
         return mWriter;
     }
 
-    public String getmActors() {
+    public String getActors() {
         return mActors;
     }
 

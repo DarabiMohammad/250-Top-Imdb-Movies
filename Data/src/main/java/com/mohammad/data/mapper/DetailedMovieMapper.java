@@ -16,7 +16,7 @@ public class DetailedMovieMapper implements EntityMapper<DetailedMovieEntity, De
                 mEntity.getPoster(),mEntity.getGenres(),mEntity.getImages(),
                 mEntity.getYear(),mEntity.getCountry(),mEntity.getImdbRating(),
                 mEntity.getRated(),mEntity.getReleasd(),mEntity.getRuntime(),
-                mEntity.getDirector(),mEntity.getWriter(),mEntity.getmActors(),
+                mEntity.getDirector(),mEntity.getWriter(),mEntity.getActors(),
                 mEntity.getPlot(),mEntity.getAwards(),mEntity.getMetaScore(),
                 mEntity.getImdbVotes(),mEntity.getImdbId(),mEntity.getType());
     }

@@ -14,7 +14,6 @@ dependencies {
     implementation remoteDependencies.retorfitAdapter
 
     implementation remoteTestDependencies.junit
-    implementation remoteTestDependencies.kotlinJUnit
     implementation remoteTestDependencies.assertj
     implementation remoteTestDependencies.mokito
     implementation remoteTestDependencies.supportRuuner

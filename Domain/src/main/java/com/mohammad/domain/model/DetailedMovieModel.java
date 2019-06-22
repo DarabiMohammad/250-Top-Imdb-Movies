@@ -8,7 +8,7 @@ public class DetailedMovieModel extends MovieModel {
     private String mCountry;
     private String mImdbRating;
     private String mRated;
-    private String mReleasd;
+    private String mReleased;
     private String mRuntime;
     private String mDirector;
     private String mWriter;
@@ -35,7 +35,7 @@ public class DetailedMovieModel extends MovieModel {
         this.mCountry = mCountry;
         this.mImdbRating = mImdbRating;
         this.mRated = mRated;
-        this.mReleasd = mReleasd;
+        this.mReleased = mReleasd;
         this.mRuntime = mRuntime;
         this.mDirector = mDirector;
         this.mWriter = mWriter;
@@ -65,7 +65,7 @@ public class DetailedMovieModel extends MovieModel {
     }
 
     public String getReleasd() {
-        return mReleasd;
+        return mReleased;
     }
 
     public String getRuntime() {

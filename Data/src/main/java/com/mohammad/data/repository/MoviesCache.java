@@ -22,13 +22,13 @@ public interface MoviesCache {
 
     Completable saveGenresListToCache(@NonNull List<GenresEntity> mGenresList);
 
-    Completable saveSpecialGenreMoviesToCache(@NonNull List<MovieEntity> mSpecialGenreMovies);
+    Completable saveSpecialGenreMoviesToCache(@NonNull List<MovieEntity> mSpecialGenreMovies,@NonNull int mGenreId);
 
     Observable<List<MovieEntity>> getMoviesFromCache();
 
     Observable<List<MovieEntity>> getMoviesByNameFromCache(@NonNull String mName);
 
-    Observable<DetailedMovieEntity> getMovieDetailFromCache(@NonNull int mMovieId);
+    Observable<DetailedMovieEntity> getDetailedMovieFromCache(@NonNull int mMovieId);
 
     Observable<List<GenresEntity>> getGenresFromCache();
 
