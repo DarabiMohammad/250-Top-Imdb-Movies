@@ -8,7 +8,6 @@ import com.mohammad.cache.mapper.GenreMapper;
 import com.mohammad.cache.mapper.MovieMapper;
 import com.mohammad.cache.model.CachedDetailedMovie;
 import com.mohammad.cache.model.CachedGenres;
-import com.mohammad.cache.model.CachedMovie;
 import com.mohammad.cache.model.Config;
 import com.mohammad.data.model.DetailedMovieEntity;
 import com.mohammad.data.model.GenresEntity;
@@ -63,7 +62,7 @@ public class MoviesCacheImp implements MoviesCache {
         return Completable.defer(new Callable<Completable>() {
             @Override
             public Completable call() throws Exception {
-                List<CachedMovie> mCachedMovies = new ArrayList<>();
+                List<CachedDetailedMovie> mCachedMovies = new ArrayList<>();
                 for (MovieEntity mModel : mEntityMovies) {
                     mCachedMovies.add(mMovieMapper.mapToCache(mModel));
                 }
@@ -104,13 +103,13 @@ public class MoviesCacheImp implements MoviesCache {
         return Completable.defer(new Callable<Completable>() {
             @Override
             public Completable call() throws Exception {
-                List<CachedMovie> mCachedMovies = new ArrayList<>();
-                int[] mMovieIds = new int[mSpecialGenreMovies.size()];
-                for (int i = 0; i < mSpecialGenreMovies.size(); i++) {
-                    mMovieIds[i] = mSpecialGenreMovies.get(i).getId();
-                    mCachedMovies.add(mMovieMapper.mapToCache(mSpecialGenreMovies.get(i)));
+                List<CachedDetailedMovie> mCachedMovies = new ArrayList<>();
+                StringBuilder mMovieIds = new StringBuilder();
+                for (MovieEntity mModel : mSpecialGenreMovies) {
+                    mMovieIds.append(mModel.getId()).append(",");
+                    mCachedMovies.add(mMovieMapper.mapToCache(mModel));
                 }
-                mDataBase.getMoviesDao().updateSpecialGenreMovieIds(mMovieIds, mGenreId);
+                mDataBase.getMoviesDao().updateSpecialGenreMovieIds(mMovieIds.toString(), mGenreId);
                 mDataBase.getMoviesDao().saveMoviesToCache(mCachedMovies);
                 return Completable.complete();
             }
@@ -120,11 +119,11 @@ public class MoviesCacheImp implements MoviesCache {
     @Override
     public Observable<List<MovieEntity>> getMoviesFromCache() {
         return mDataBase.getMoviesDao().getAllMoviesFromCache().toObservable()
-                .map(new Function<List<CachedMovie>, List<MovieEntity>>() {
+                .map(new Function<List<CachedDetailedMovie>, List<MovieEntity>>() {
                     @Override
-                    public List<MovieEntity> apply(List<CachedMovie> mCachedMovies) throws Exception {
+                    public List<MovieEntity> apply(List<CachedDetailedMovie> mCachedMovies) throws Exception {
                         List<MovieEntity> mMovieEntities = new ArrayList<>();
-                        for (CachedMovie mModel : mCachedMovies) {
+                        for (CachedDetailedMovie mModel : mCachedMovies) {
                             mMovieEntities.add(mMovieMapper.mapFromCache(mModel));
                         }
                         return mMovieEntities;
@@ -135,11 +134,11 @@ public class MoviesCacheImp implements MoviesCache {
     @Override
     public Observable<List<MovieEntity>> getMoviesByNameFromCache(String mName) {
         return mDataBase.getMoviesDao().getMoiveByNameFromCache(mName).toObservable()
-                .map(new Function<List<CachedMovie>, List<MovieEntity>>() {
+                .map(new Function<List<CachedDetailedMovie>, List<MovieEntity>>() {
                     @Override
-                    public List<MovieEntity> apply(List<CachedMovie> mCachedMovies) throws Exception {
+                    public List<MovieEntity> apply(List<CachedDetailedMovie> mCachedMovies) throws Exception {
                         List<MovieEntity> mMovieEntities = new ArrayList<>();
-                        for (CachedMovie mModel : mCachedMovies) {
+                        for (CachedDetailedMovie mModel : mCachedMovies) {
                             mMovieEntities.add(mMovieMapper.mapFromCache(mModel));
                         }
                         return mMovieEntities;
@@ -175,13 +174,13 @@ public class MoviesCacheImp implements MoviesCache {
 
     @Override
     public Observable<List<MovieEntity>> getSpecialGenreMoviesFromCache(int mGenreId) {
-        int[] mMovieIds = mDataBase.getMoviesDao().getSpecialGenreMoiveIdsFromCache(mGenreId);
+        int[] mMovieIds = getMovieIdsFromString(mDataBase.getMoviesDao().getSpecialGenreMoiveIdsFromCache(mGenreId));
         return mDataBase.getMoviesDao().getSpecialGenreMoviesFromCache(mMovieIds).toObservable()
-                .map(new Function<List<CachedMovie>, List<MovieEntity>>() {
+                .map(new Function<List<CachedDetailedMovie>, List<MovieEntity>>() {
                     @Override
-                    public List<MovieEntity> apply(List<CachedMovie> mCachedMovies) throws Exception {
+                    public List<MovieEntity> apply(List<CachedDetailedMovie> mCachedMovies) throws Exception {
                         List<MovieEntity> mMovieEntities = new ArrayList<>();
-                        for (CachedMovie mModel : mCachedMovies) {
+                        for (CachedDetailedMovie mModel : mCachedMovies) {
                             mMovieEntities.add(mMovieMapper.mapFromCache(mModel));
                         }
                         return mMovieEntities;
@@ -226,5 +225,14 @@ public class MoviesCacheImp implements MoviesCache {
                 return mCurrentTime - mConfig.getLastCacheTime() > mExpirationTime;
             }
         });
+    }
+
+    private int[] getMovieIdsFromString(String mInput) {
+        String[] mExtractedIds = mInput.split(",");
+        int[] mMovieIds = new int[mExtractedIds.length];
+        for (int i = 0; i < mExtractedIds.length; i++) {
+            mMovieIds[i] = Integer.parseInt(mExtractedIds[i]);
+        }
+        return mMovieIds;
     }
 }

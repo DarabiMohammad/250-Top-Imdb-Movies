@@ -2,22 +2,20 @@ apply plugin: 'java-library'
 
 dependencies {
     def remoteDependencies = rootProject.ext.remoteDependencies
-    def remoteTestDependencies = rootProject.ext.remoteTestDependencies
 
     compile project(':Data')
 
     implementation remoteDependencies.gson
+    implementation remoteDependencies.rxJava
+    implementation remoteDependencies.javaxAnnotation
+    implementation remoteDependencies.javaxInject
+    implementation remoteDependencies.androidAnnotations
+    implementation remoteDependencies.okio
     implementation remoteDependencies.okHttp
     implementation remoteDependencies.okHttpLogger
     implementation remoteDependencies.retorfit
     implementation remoteDependencies.retorfitConverter
     implementation remoteDependencies.retorfitAdapter
-
-    implementation remoteTestDependencies.junit
-    implementation remoteTestDependencies.assertj
-    implementation remoteTestDependencies.mokito
-    implementation remoteTestDependencies.supportRuuner
-    implementation remoteTestDependencies.supportRulse
 }
 
 sourceCompatibility = "8"

@@ -7,49 +7,47 @@ import android.arch.persistence.room.Query;
 
 import com.mohammad.cache.model.CachedDetailedMovie;
 import com.mohammad.cache.model.CachedGenres;
-import com.mohammad.cache.model.CachedMovie;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 @Dao
-public interface CachedMoivesDao {
+public abstract class CachedMoivesDao {
 
     @Query("SELECT * FROM movies")
-    Flowable<List<CachedMovie>> getAllMoviesFromCache();
+    public abstract Flowable<List<CachedDetailedMovie>> getAllMoviesFromCache();
 
     @Query("SELECT * FROM movies WHERE movie_id = :mMovieId LIMIT 1")
-    Flowable<CachedMovie> getMovieByIdFromCache(int mMovieId);
+    abstract Flowable<CachedDetailedMovie> getMovieByIdFromCache(int mMovieId);
 
     @Query("SELECT * FROM movies WHERE title LIKE :mTitle")
-    Flowable<List<CachedMovie>> getMoiveByNameFromCache(String mTitle);
+    public abstract Flowable<List<CachedDetailedMovie>> getMoiveByNameFromCache(String mTitle);
 
     @Query("SELECT * FROM movies WHERE movie_id IN (:mMovieIds)")
-    Flowable<List<CachedMovie>> getSpecialGenreMoviesFromCache(int[] mMovieIds);
+    public abstract Flowable<List<CachedDetailedMovie>> getSpecialGenreMoviesFromCache(int[] mMovieIds);
 
-    @Query("SELECT * FROM detailed_movie WHERE detailed_movie_id = :mMovieId LIMIT 1")
-    Flowable<CachedDetailedMovie> getDetailedMovieFromCache(int mMovieId);
+    @Query("SELECT * FROM movies WHERE movie_id = :mMovieId LIMIT 1")
+    public abstract Flowable<CachedDetailedMovie> getDetailedMovieFromCache(int mMovieId);
 
     @Query("SELECT * FROM genres")
-    Flowable<List<CachedGenres>> getAllGenresFromCache();
+    public abstract Flowable<List<CachedGenres>> getAllGenresFromCache();
 
     @Query("SELECT genre_movies_id FROM genres WHERE genre_id = :genreId LIMIT 1")
-    int[] getSpecialGenreMoiveIdsFromCache(int genreId);
+    public abstract String getSpecialGenreMoiveIdsFromCache(int genreId);
 
     @Query("DELETE FROM movies")
-    void clearAllMoviesFromCache();
+    public abstract void clearAllMoviesFromCache();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable saveMoviesToCache(List<CachedMovie> mMovies);
+    public abstract void saveMoviesToCache(List<CachedDetailedMovie> mMovies);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable saveDetailedMovieToCache(CachedDetailedMovie mDetailedMovie);
+    public abstract void saveDetailedMovieToCache(CachedDetailedMovie mDetailedMovie);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable saveGenresToCache(List<CachedGenres> mGenres);
+    public abstract void saveGenresToCache(List<CachedGenres> mGenres);
 
     @Query("UPDATE genres SET genre_movies_id = :mMovieIds WHERE genre_id = :genreId")
-    Completable updateSpecialGenreMovieIds(int[] mMovieIds, int genreId);
+    public abstract void updateSpecialGenreMovieIds(String mMovieIds, int genreId);
 }

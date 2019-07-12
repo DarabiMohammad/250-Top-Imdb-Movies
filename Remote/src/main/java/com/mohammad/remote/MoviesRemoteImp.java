@@ -15,6 +15,7 @@ import com.mohammad.remote.service.MoviesApiMethods;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import io.reactivex.Completable;

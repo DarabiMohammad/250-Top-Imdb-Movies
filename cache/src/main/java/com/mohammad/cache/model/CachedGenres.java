@@ -2,16 +2,13 @@ package com.mohammad.cache.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.mohammad.cache.db.DbConstants;
 
 @Entity(tableName = DbConstants.GENRES_TABLE_NAME,
-        foreignKeys = @ForeignKey(entity = CachedMovie.class,
-                parentColumns = "movie_id",
-                childColumns = "genre_movies_id",
-                onDelete = ForeignKey.CASCADE))
+        indices = {@Index(value = "genre_id")})
 public class CachedGenres {
 
     @PrimaryKey
@@ -19,7 +16,7 @@ public class CachedGenres {
     private int mId;
 
     @ColumnInfo(name = "genre_movies_id")
-    private int[] mMoviesId;
+    public String mMoviesId;
 
     @ColumnInfo(name = "genre_name")
     private String mName;
@@ -29,7 +26,7 @@ public class CachedGenres {
         this.mName = mName;
     }
 
-    public void setMoviesId(int[] mMoviesId) {
+    public void setMoviesId(String mMoviesId) {
         this.mMoviesId = mMoviesId;
     }
 
@@ -37,8 +34,8 @@ public class CachedGenres {
         return mId;
     }
 
-    public int[] getMoviesId() {
-        if (mMoviesId.length > 0)
+    public String getMoviesId() {
+        if (!mMoviesId.isEmpty())
             return mMoviesId;
         else
             throw new UnsupportedOperationException("There Is No Cached Movie For This Genre");

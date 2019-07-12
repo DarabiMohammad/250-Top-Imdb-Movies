@@ -7,8 +7,8 @@ android {
     compileSdkVersion rootProject.androidCompileSdkVersion
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
     }
 
     buildTypes {
@@ -25,7 +25,6 @@ dependencies {
 
     implementation project(':Domain')
 
-    implementation presentationDependencies.daggerCompiler
     implementation presentationDependencies.dagger
     implementation presentationDependencies.rxAndroid
     implementation presentationDependencies.javaxAnnotation
@@ -33,5 +32,6 @@ dependencies {
     implementation presentationDependencies.androidAnnotations
     implementation presentationDependencies.archRuntime
     implementation presentationDependencies.archExtensions
-    implementation presentationDependencies.archCompiler
+    annotationProcessor presentationDependencies.daggerCompiler
+    annotationProcessor presentationDependencies.archCompiler
 }

@@ -27,7 +27,15 @@ dependencies {
 
     implementation project(':Data')
 
+    implementation cacheDependencies.gson
+    implementation cacheDependencies.guava
+    implementation cacheDependencies.dagger
+    implementation cacheDependencies.rxJava
+    implementation cacheDependencies.javaxAnnotation
     implementation cacheDependencies.javaxInject
+    implementation cacheDependencies.androidAnnotations
     implementation cacheDependencies.roomRuntime
-    implementation cacheDependencies.roomCompiler
+    implementation cacheDependencies.roomRxJava
+    annotationProcessor cacheDependencies.roomCompiler
+    annotationProcessor cacheDependencies.daggerCompiler
 }
