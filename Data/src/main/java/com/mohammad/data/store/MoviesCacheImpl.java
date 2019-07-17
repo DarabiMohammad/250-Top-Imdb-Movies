@@ -19,7 +19,7 @@ public class MoviesCacheImpl implements MoviesDataStore {
     private MoviesCache mCache;
 
     @Inject
-    MoviesCacheImpl(MoviesCache mCache){
+    public MoviesCacheImpl(MoviesCache mCache){
         this.mCache = mCache;
     }
 

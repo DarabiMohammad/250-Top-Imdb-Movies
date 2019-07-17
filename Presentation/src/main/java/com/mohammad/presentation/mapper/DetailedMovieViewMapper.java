@@ -3,7 +3,13 @@ package com.mohammad.presentation.mapper;
 import com.mohammad.domain.model.DetailedMovieModel;
 import com.mohammad.presentation.model.DetailedMovieView;
 
+import javax.inject.Inject;
+
 public class DetailedMovieViewMapper implements MoviesMapper<DetailedMovieView, DetailedMovieModel> {
+
+    @Inject
+    public DetailedMovieViewMapper() {
+    }
 
     @Override
     public DetailedMovieView mapToView(DetailedMovieModel mData) {

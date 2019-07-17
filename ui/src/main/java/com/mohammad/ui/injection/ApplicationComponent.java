@@ -2,11 +2,11 @@ package com.mohammad.ui.injection;
 
 import android.app.Application;
 
-import com.mohammad.ui.MoviesApplication;
 import com.mohammad.ui.injection.module.ApplicationModule;
 import com.mohammad.ui.injection.module.CacheModule;
 import com.mohammad.ui.injection.module.DataModule;
 import com.mohammad.ui.injection.module.PresentationModule;
+import com.mohammad.ui.injection.module.RemoteModule;
 import com.mohammad.ui.injection.module.UiModule;
 
 import javax.inject.Singleton;
@@ -19,7 +19,8 @@ import dagger.android.support.DaggerApplication;
 
 @Singleton
 @Component(modules = {AndroidInjectionModule.class, ApplicationModule.class,
-        UiModule.class, PresentationModule.class, DataModule.class, CacheModule.class})
+        UiModule.class, PresentationModule.class, DataModule.class,
+        CacheModule.class, RemoteModule.class})
 public interface ApplicationComponent extends AndroidInjector<DaggerApplication> {
 
     @Component.Builder
@@ -30,9 +31,4 @@ public interface ApplicationComponent extends AndroidInjector<DaggerApplication>
 
         ApplicationComponent build();
     }
-
-    @Override
-    void inject(DaggerApplication instance);
-
-    void inject(MoviesApplication mMoviesApplication);
 }

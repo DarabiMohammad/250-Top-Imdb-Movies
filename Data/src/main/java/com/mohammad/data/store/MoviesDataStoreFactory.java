@@ -10,7 +10,7 @@ public class MoviesDataStoreFactory {
     private MoviesRemoteImpl mRemoteMoviesImpl ;
 
     @Inject
-    public MoviesDataStoreFactory(MoviesCacheImpl mCacheMoviesImpl, MoviesRemoteImpl mRemoteMoviesImpl) {
+    public MoviesDataStoreFactory(MoviesCacheImpl mCacheMoviesImpl, MoviesRemoteImpl mRemoteMoviesImpl){
         this.mCacheMoviesImpl = mCacheMoviesImpl;
         this.mRemoteMoviesImpl = mRemoteMoviesImpl;
     }

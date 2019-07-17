@@ -5,7 +5,13 @@ import com.mohammad.data.model.DetailedMovieEntity;
 
 import java.io.Serializable;
 
+import javax.inject.Inject;
+
 public class DetailedMovieMapper extends CacheMapper<CachedDetailedMovie, DetailedMovieEntity> implements Serializable {
+
+    @Inject
+    public DetailedMovieMapper() {
+    }
 
     @Override
     public DetailedMovieEntity mapFromCache(CachedDetailedMovie mCacheModel) {

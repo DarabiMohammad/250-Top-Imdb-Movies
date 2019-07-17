@@ -2,6 +2,7 @@ package com.mohammad.presentation;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.util.Log;
 
 import com.mohammad.domain.interactor.browse.GetAllMovies;
 import com.mohammad.domain.interactor.browse.GetGenres;
@@ -23,6 +24,8 @@ import com.mohammad.presentation.state.ResourceState;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.observers.DisposableObserver;
 
 public class MoviesViewModel extends ViewModel {
@@ -43,6 +46,7 @@ public class MoviesViewModel extends ViewModel {
     private MutableLiveData<Resource<DetailedMovieView>> mDetailedMovieLiveData;
     private MutableLiveData<Resource<List<GenreView>>> mGenresLiveData;
 
+    @Inject
     public MoviesViewModel(GetAllMovies mGetAllMovies, GetMovieByName mGetMovieByName,
                            GetMovieDetail mGetDetailedMovie,
                            GetSpecialGenreMovies mGetSpecialGenreMovies,
@@ -63,6 +67,7 @@ public class MoviesViewModel extends ViewModel {
         mSpecialGenreMoviesLiveData = new MutableLiveData<>();
         mDetailedMovieLiveData = new MutableLiveData<>();
         mGenresLiveData = new MutableLiveData<>();
+
     }
 
     @Override
@@ -153,7 +158,7 @@ public class MoviesViewModel extends ViewModel {
             for (MovieModel mModel : mMovieModels) {
                 mMovies.add(mMovieMapper.mapToView(mModel));
             }
-            mMoviesByNameLiveData.postValue(new Resource<List<MovieView>>(ResourceState.SUCCESS,
+            mMoviesByNameLiveData.postValue(new Resource<>(ResourceState.SUCCESS,
                     mMovies, null));
         }
 
@@ -177,8 +182,8 @@ public class MoviesViewModel extends ViewModel {
             for (MovieModel mModel : mMovieModels) {
                 mMovies.add(mMovieMapper.mapToView(mModel));
             }
-            mSpecialGenreMoviesLiveData.postValue(new Resource<List<MovieView>>(ResourceState.SUCCESS,
-                    mMovies,null));
+            mSpecialGenreMoviesLiveData.postValue(new Resource<>(ResourceState.SUCCESS,
+                    mMovies, null));
         }
 
         @Override
@@ -221,7 +226,7 @@ public class MoviesViewModel extends ViewModel {
             for (GenresModel mModel : mGenresModels) {
                 mGenres.add(mGenresMapper.mapToView(mModel));
             }
-            mGenresLiveData.postValue(new Resource<List<GenreView>>(ResourceState.SUCCESS,
+            mGenresLiveData.postValue(new Resource<>(ResourceState.SUCCESS,
                     mGenres, null));
         }
 

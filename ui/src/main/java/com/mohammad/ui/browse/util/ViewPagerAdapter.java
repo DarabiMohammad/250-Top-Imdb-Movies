@@ -8,15 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private final String All_MOVIES_TITLE = "All Movies";
     private final String All_GENRES_TITLE = "All Genres";
     private List<Fragment> mFragments;
 
-    @Inject
+//    @Inject
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         mFragments = new ArrayList<>();

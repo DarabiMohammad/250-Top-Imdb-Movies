@@ -41,12 +41,14 @@ public class MoviesDataRepository implements MoviesRepository {
                                 MoviesCache mMoviesCache,
                                 MoviesDataStoreFactory mFactory) {
         this.mMovieMapper = mMovieMapper;
+        this.mMovieMapper = mMovieMapper;
         this.mDetailedMovieMapper = mDetailedMovieMapper;
         this.mUserMovieMapper = mUserMovieMapper;
         this.mGenreMapper = mGenreMapper;
         this.mMoviesCache = mMoviesCache;
         this.mFactory = mFactory;
     }
+//    }
 
     private Observable<Boolean[]> setUpCacheVariablesObservable() {
         return Observable

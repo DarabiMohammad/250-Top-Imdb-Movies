@@ -7,7 +7,13 @@ import com.google.gson.Gson;
 
 import java.io.Serializable;
 
+import javax.inject.Inject;
+
 public class StringConverter implements Serializable {
+
+    @Inject
+    public StringConverter() {
+    }
 
     @TypeConverter
     public String fromArray(String[] mArray) {

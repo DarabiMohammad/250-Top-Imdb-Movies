@@ -15,7 +15,6 @@ import com.mohammad.remote.service.MoviesApiMethods;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
@@ -38,6 +37,11 @@ public class MoviesRemoteImp implements MoviesRemote {
         this.mDetailedMoviesMapper = mDetailedMoviesMapper;
         this.mGenresMapper = mGenresMapper;
     }
+
+//    @Inject
+//    public MoviesRemoteImp(MoviesResponseMapper mMoviesMapper) {
+//        this.mMoviesMapper = mMoviesMapper;
+//    }
 
     @Override
     public Observable<List<MovieEntity>> getAllMovies(int mPageNumber) {

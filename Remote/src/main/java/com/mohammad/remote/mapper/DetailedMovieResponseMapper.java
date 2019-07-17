@@ -3,7 +3,13 @@ package com.mohammad.remote.mapper;
 import com.mohammad.data.model.DetailedMovieEntity;
 import com.mohammad.remote.model.common.DetailedMovieModel;
 
+import javax.inject.Inject;
+
 public class DetailedMovieResponseMapper implements MoviesMapper<DetailedMovieModel, DetailedMovieEntity> {
+
+    @Inject
+    public DetailedMovieResponseMapper() {
+    }
 
     @Override
     public DetailedMovieEntity mapFromModel(DetailedMovieModel mModel) {

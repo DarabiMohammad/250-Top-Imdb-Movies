@@ -3,7 +3,13 @@ package com.mohammad.cache.mapper;
 import com.mohammad.cache.model.CachedGenres;
 import com.mohammad.data.model.GenresEntity;
 
+import javax.inject.Inject;
+
 public class GenreMapper extends CacheMapper<CachedGenres, GenresEntity> {
+
+    @Inject
+    public GenreMapper() {
+    }
 
     @Override
     public GenresEntity mapFromCache(CachedGenres mCacheModel) {

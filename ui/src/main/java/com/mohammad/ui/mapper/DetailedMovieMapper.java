@@ -3,7 +3,14 @@ package com.mohammad.ui.mapper;
 import com.mohammad.presentation.model.DetailedMovieView;
 import com.mohammad.ui.model.DetailedMovie;
 
+import javax.inject.Inject;
+
 public class DetailedMovieMapper implements ViewMapper<DetailedMovieView, DetailedMovie> {
+
+    @Inject
+    public DetailedMovieMapper() {
+    }
+
     @Override
     public DetailedMovie mapToView(DetailedMovieView mPresentation) {
         return new DetailedMovie(mPresentation.getId(),mPresentation.getTitle(),

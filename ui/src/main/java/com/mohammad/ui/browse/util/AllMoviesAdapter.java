@@ -16,13 +16,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.BrowseViewHolder> {
+public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.BrowseViewHolder> {
 
     private List<Movie> mMovies;
     private MovieClickListener mListener;
 
     @Inject
-    BrowseAdapter() {
+    AllMoviesAdapter() {
     }
 
     @NonNull

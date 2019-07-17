@@ -18,6 +18,14 @@ public abstract class CacheModule {
         return MoviesDataBase.getInstance(mApplication);
     }
 
+//    @Provides
+//    static MoviesCacheImp provideMoviesCacheImp(Context mContext, MoviesDataBase mDataBase,
+//                                                MovieMapper mMovieMapper,
+//                                                DetailedMovieMapper mDetailedMovieMapper,
+//                                                GenreMapper mGenreMapper) {
+//        return new MoviesCacheImp(mContext,mDataBase,mMovieMapper,mDetailedMovieMapper,mGenreMapper);
+//    }
+
     @Binds
     abstract MoviesCache bindMoviesCache(MoviesCacheImp mMoviesCache);
 }

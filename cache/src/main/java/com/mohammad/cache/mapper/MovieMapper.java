@@ -3,7 +3,13 @@ package com.mohammad.cache.mapper;
 import com.mohammad.cache.model.CachedDetailedMovie;
 import com.mohammad.data.model.MovieEntity;
 
+import javax.inject.Inject;
+
 public class MovieMapper extends CacheMapper<CachedDetailedMovie, MovieEntity> {
+
+    @Inject
+    public MovieMapper() {
+    }
 
     @Override
     public MovieEntity mapFromCache(CachedDetailedMovie mCacheModel) {

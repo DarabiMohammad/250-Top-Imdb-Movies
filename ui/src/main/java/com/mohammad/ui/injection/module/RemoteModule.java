@@ -17,6 +17,14 @@ public abstract class RemoteModule {
         return new MoviesApiServiceFactory().makeMoviesApiMethods(true);
     }
 
+//    @Provides
+//    static MoviesRemoteImp provideMoviesRemoteImp(MoviesApiMethods mService,
+//                                                  MoviesResponseMapper mMoviesMapper,
+//                                                  DetailedMovieResponseMapper mDetailedMoviesMapper,
+//                                                  GenresResponseMapper mGenresMapper){
+//        return new MoviesRemoteImp(mService,mMoviesMapper,mDetailedMoviesMapper,mGenresMapper);
+//    }
+
     @Binds
     abstract MoviesRemote bindMoviesRemote(MoviesRemoteImp mRemoteImp);
 }
